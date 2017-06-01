@@ -1,0 +1,56 @@
+*&---------------------------------------------------------------------*
+*& Report  ZCALC_50
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+REPORT zcalc_50.
+
+DATA:  v_reslt  TYPE num5,
+       v_result TYPE string,
+       v_text   TYPE string.
+DATA wa_tb1 TYPE asdad .
+
+PARAMETERS: p_val1 TYPE num2,
+            p_op   TYPE c,
+            p_val2 TYPE num2.
+
+IF p_val1 EQ '' OR p_val2 EQ ''.
+  WRITE 'Operação inválida'.
+  STOP.
+ELSE.
+
+  CASE p_op.
+
+    WHEN '+'.
+      v_reslt = p_val1 + p_val2.
+    WHEN '-'.
+      v_reslt = p_val1 - p_val2.
+    WHEN '*'.
+      v_reslt = p_val1 * p_val2.
+    WHEN '/'.
+      IF p_val2 IS INITIAL.
+        WRITE text-001."'Divisão não permitida'.
+      ELSE.
+        v_reslt = p_val1 / p_val2.
+      ENDIF.
+
+    WHEN OTHERS.
+      WRITE 'Operador inválido'.
+      STOP.
+  ENDCASE.
+
+ENDIF.
+
+
+*MODIFY ajsasd FROM wa_tb1.
+*COMPUTE v_reslt = p_val1 + p_val2.
+
+v_text = 'O resultado é '.
+
+CONCATENATE v_text v_reslt INTO v_result SEPARATED BY space.
+
+MESSAGE v_result TYPE 'I'.
+
+WRITE v_result.
