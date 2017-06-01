@@ -1,0 +1,30 @@
+*&---------------------------------------------------------------------*
+*& Report  ZTES0002
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+REPORT ztes0002.
+
+DATA v_full TYPE i VALUE 150.
+
+TYPES: BEGIN OF typ_flight,
+         carrid   TYPE s_carr_id,
+         carrname TYPE s_carrname,
+         connid   TYPE sflight-connid,
+         fldate   TYPE s_date,
+         perc     TYPE p DECIMALS 3,
+       END OF typ_flight.
+
+DATA: wa_flight TYPE typ_flight.
+
+wa_flight-carrid = 'LH'.
+wa_flight-carrname = 'LH Airlines'.
+wa_flight-connid = 1010.
+wa_flight-fldate = sy-datum.
+wa_flight-perc = 30 / v_full * 100.
+
+WRITE: wa_flight-carrid,
+       wa_flight-carrname,
+       wa_flight-perc.
