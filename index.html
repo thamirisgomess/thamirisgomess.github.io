@@ -6,19 +6,24 @@
 function createPopup(title){
 	var popup = open("", title, "width=300,height=200");
 	var txt = popup.document.createElement("TEXTAREA");
+
 	popup.document.body.appendChild(txt);
 }
+
 function timingChange() { 
 	setTimeout(
 		function(){
 			document.getElementById('resultado').innerHTML = "<input type='text' id='novoCampo'>"},3000); 
 }
+
 function clicado() { 
 	document.getElementById('buttonSimple').value = "Obrigado!"
 }
+
 function voltou() { 
 	document.getElementById('resultado').innerHTML = "Voltou!"; 
 }
+
 function fazerCadastro() {
 	if(document.getElementById('elementosForm:nome').value == '') {
 		alert("Nome eh obrigatorio");
@@ -63,6 +68,7 @@ function fazerCadastro() {
 			+ "<div id='descEsportes'>Esportes: <span>" + esportes + "</span></div>"
 			+ "<div id='descSugestoes'>Sugestoes: <span>" + document.getElementById('elementosForm:sugestoes').value + "</span></div>";
 }
+
 </script>
 </head>
 <body>
